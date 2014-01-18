@@ -39,12 +39,10 @@ group :test do
 	gem 'capybara'
 end
 
-#Postgres
-gem 'pg'
+gem 'pg' #Postgres
+gem 'devise' # Devise Authentication
+gem 'bootstrap-sass' #bootstrap
 
-# Devise Authentication
-gem 'devise'
- 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
