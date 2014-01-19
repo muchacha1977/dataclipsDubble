@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#DbConnectionType.create( "type": "postgresql" )
+#DbConnectionType.create( "type": "mysql" )
