@@ -1,4 +1,6 @@
 Dataclips::Application.routes.draw do
+  resources :db_connections
+
   root to: 'static_pages#home'
 
   devise_for :users
