@@ -44,6 +44,8 @@ gem 'devise' # Devise Authentication
 gem 'bootstrap-sass' #bootstrap
 gem 'sequel' #DB-Mgmt-Gem
 
+gem 'foreigner' #foreign keys in DB
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
