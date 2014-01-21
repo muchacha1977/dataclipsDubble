@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :db_connection_id %><br>
-    <%= f.number_field :db_connection_id %>
+    <%= collection_select(:dataclip, :db_connection_id, DbConnection.all, :id, :title) %>
+
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -21,11 +22,7 @@
   </div>
   <div class="field">
     <%= f.label :statement %><br>
-    <%= f.text_field :statement %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.text_area :statement %>
   </div>
   <div class="actions">
     <%= f.submit %>

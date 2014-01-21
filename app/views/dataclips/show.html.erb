@@ -20,7 +20,8 @@
   <%= @dataclip.user_id %>
 </p>
 
-<table border=1>
+<table class="table table-striped">
+<tbody>
 <% @dataset.each do |row| %>
 	<tr>
 	<% row.each do |key, value| %>
@@ -28,6 +29,7 @@
 	<% end %>
 	</tr>
 <% end %>
+</tbody>
 </table>
 
 <%= link_to 'Edit', edit_dataclip_path(@dataclip) %> |

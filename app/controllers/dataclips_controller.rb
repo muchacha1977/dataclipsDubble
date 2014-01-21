@@ -30,6 +30,7 @@ class DataclipsController < ApplicationController
   # POST /dataclips.json
   def create
     @dataclip = Dataclip.new(dataclip_params)
+    @dataclip.user_id = current_user.id;
 
     respond_to do |format|
       if @dataclip.save
@@ -74,6 +75,6 @@ class DataclipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dataclip_params
-      params.require(:dataclip).permit(:db_connection_id, :title, :statement, :user_id)
+      params.require(:dataclip).permit(:db_connection_id, :title, :statement)
     end
 end
