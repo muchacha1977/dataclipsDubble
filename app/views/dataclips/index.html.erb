@@ -1,0 +1,33 @@
+<h1>Listing dataclips</h1>
+
+<table border=1>
+  <thead>
+    <tr>
+      <th>Db connection</th>
+      <th>Title</th>
+      <th>Statement</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dataclips.each do |dataclip| %>
+      <tr>
+        <td><%= dataclip.db_connection_id %></td>
+        <td><%= dataclip.title %></td>
+        <td><%= dataclip.statement %></td>
+        <td><%= dataclip.user_id %></td>
+        <td><%= link_to 'Show', dataclip %></td>
+        <td><%= link_to 'Edit', edit_dataclip_path(dataclip) %></td>
+        <td><%= link_to 'Destroy', dataclip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dataclip', new_dataclip_path %>

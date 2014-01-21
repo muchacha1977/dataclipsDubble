@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Db connection:</strong>
+  <%= @dataclip.db_connection_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @dataclip.title %>
+</p>
+
+<p>
+  <strong>Statement:</strong>
+  <%= @dataclip.statement %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @dataclip.user_id %>
+</p>
+
+<table border=1>
+<% @dataset.each do |row| %>
+	<tr>
+	<% row.each do |key, value| %>
+		<td><%= value %></td> 
+	<% end %>
+	</tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_dataclip_path(@dataclip) %> |
+<%= link_to 'Back', dataclips_path %>

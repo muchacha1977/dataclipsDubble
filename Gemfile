@@ -42,6 +42,7 @@ end
 gem 'pg' #Postgres
 gem 'devise' # Devise Authentication
 gem 'bootstrap-sass' #bootstrap
+gem 'sequel' #DB-Mgmt-Gem
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

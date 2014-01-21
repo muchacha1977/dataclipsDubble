@@ -1,4 +1,6 @@
 Dataclips::Application.routes.draw do
+  resources :dataclips
+
   resources :db_connections
 
   root to: 'static_pages#home'
