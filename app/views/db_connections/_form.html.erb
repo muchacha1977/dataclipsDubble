@@ -11,6 +11,19 @@
     </div>
   <% end %>
 
+    <%= f.text_field :title, placeholder: "Title for DBConnection" %> 
+    <%= f.text_field :db_connection_type_id, placeholder: "Set to 1" %> 
+    <%= f.text_field :hostname, placeholder: "example.com or IP-address" %> 
+    <%= f.text_field :port, placeholder: "5432" %> 
+    <%= f.text_field :username, placeholder: "better not root" %> 
+    <%= f.text_field :password, placeholder: "..." %> 
+
+ <select name="post[author_id]">
+    <% DBConnectionType.all.each do |db_connection_type| %>
+        <option value="<%= db_connection_type.id %>"><%= db_connection_type.dbtype %></option>
+    <% end %>
+</select>
+
   <div class="actions">
     <%= f.submit %>
   </div>

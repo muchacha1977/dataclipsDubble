@@ -5,7 +5,7 @@ class DbConnectionsController < ApplicationController
   # GET /db_connections
   # GET /db_connections.json
   def index
-    @db_connections = DbConnection.all
+    @db_connections = DbConnection.where(user_id: current_user.id);
   end
 
   # GET /db_connections/1
@@ -26,7 +26,7 @@ class DbConnectionsController < ApplicationController
   # POST /db_connections.json
   def create
     @db_connection = DbConnection.new(db_connection_params)
-
+    @db_connection.user_id = current_user.id;
     respond_to do |format|
       if @db_connection.save
         format.html { redirect_to @db_connection, notice: 'Db connection was successfully created.' }
@@ -43,7 +43,7 @@ class DbConnectionsController < ApplicationController
   def update
     respond_to do |format|
       if @db_connection.update(db_connection_params)
-        format.html { redirect_to @db_connection, notice: 'Db connection was successfully updated.' }
+        format.html { redirect_to db_connections_path, notice: 'Db connection was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,6 +70,6 @@ class DbConnectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def db_connection_params
-      params[:db_connection]
+      params[:db_connection].permit(:title, :db_connection_type_id, :hostname, :port, :username, :password);
     end
 end

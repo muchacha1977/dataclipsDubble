@@ -1,8 +1,10 @@
 <h1>Listing db_connections</h1>
 
-<table>
+<table border=1>
   <thead>
     <tr>
+      <th>ID</th>
+      <th>Title</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +14,8 @@
   <tbody>
     <% @db_connections.each do |db_connection| %>
       <tr>
+        <td><%= db_connection.id %></td>
+        <td><%= db_connection.title %></td>
         <td><%= link_to 'Show', db_connection %></td>
         <td><%= link_to 'Edit', edit_db_connection_path(db_connection) %></td>
         <td><%= link_to 'Destroy', db_connection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
