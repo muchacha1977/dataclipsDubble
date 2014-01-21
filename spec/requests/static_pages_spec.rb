@@ -1,21 +1,41 @@
 require 'spec_helper'
 
 describe "Static pages" do
+
+  let(:base_title) { "dataclips.io" }
+
   describe "Home page" do
-    it "should have the content 'Sample App'" do 
-      visit '/static_pages/home'
-      page.should have_content('Sample App')
+    it "should have the content 'Hello, world!'" do 
+      visit home_path
+      page.should have_selector('h1', :text => 'Hello, world!')
     end 
+    it "should have the title 'Home'" do
+    visit home_path
+    page.should have_selector('title', :content  => "Home")
   end
 
-describe "About page" do
-    before { visit about path }
-	  it { should have selector('h1', text: 'About') }
-	  it { should have selector('title', text: full_title('About us')) }
-	end
+  end
+
 describe "Contact page" do
-	before { visit contact path }
- 		it { should have selector('h1', text: 'Contact') }
-		it { should have selector('title', text: full_title('Contact')) }
-	end
+  it "should have the h1 'Contact'" do
+    visit contact_path
+    page.should have_selector('h1', :text => 'Contact')
+end
+it "should have the title 'Contact'" do
+  visit contact_path
+    page.should have_selector('title', :content  => "Contact")
+  end
+end
+
+
+describe "About page" do
+  it "should have the h1 'About us'" do
+    visit about_path
+    page.should have_selector('h1', :text => 'About us')
+end
+it "should have the title 'About us'" do
+    visit about_path
+    page.should have_selector('title', :content  => "#{base_title} | About us")
+  end
+end
 end
