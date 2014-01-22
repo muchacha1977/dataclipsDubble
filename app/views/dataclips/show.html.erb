@@ -2,7 +2,7 @@
 
 <p>
   <strong>Db connection:</strong>
-  <%= @dataclip.db_connection_id %>
+  <%= @dataclip.db_connection.title %>
 </p>
 
 <p>
@@ -16,11 +16,22 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @dataclip.user_id %>
+  <strong>Link:</strong>
+  <%= "#{show_url}?id=#{@dataclip.link_token}" %>
 </p>
 
 <table class="table table-striped">
+<thead>
+  <tr>
+<% @dataset.each do |row| %>
+  <tr>
+  <% row.each do |key, value| %>
+    <td><%= key %></td> 
+  <% end %>
+  </tr>
+<% end %>
+</tr>
+</thead>
 <tbody>
 <% @dataset.each do |row| %>
 	<tr>
