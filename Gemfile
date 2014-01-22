@@ -46,6 +46,10 @@ gem 'sequel' #DB-Mgmt-Gem
 
 gem 'foreigner' #foreign keys in DB
 
+gem 'rails_12factor', group: :production #needed by heroku
+
+ruby "2.1.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
