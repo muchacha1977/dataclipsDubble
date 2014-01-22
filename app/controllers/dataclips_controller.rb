@@ -1,5 +1,5 @@
 class DataclipsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:showlink]
   before_action :set_dataclip, only: [:show, :edit, :update, :destroy]
 
   # GET /dataclips
@@ -38,6 +38,7 @@ class DataclipsController < ApplicationController
   def create
     @dataclip = Dataclip.new(dataclip_params)
     @dataclip.user_id = current_user.id;
+    @dataclip.link_token = SecureRandom.urlsafe_base64 32
 
     respond_to do |format|
       if @dataclip.save
@@ -72,6 +73,15 @@ class DataclipsController < ApplicationController
       format.html { redirect_to dataclips_url }
       format.json { head :no_content }
     end
+  end
+
+  def showlink
+    @dataclip = Dataclip.where("link_token = ?", params[:id]).first
+    p @dataclip
+    @db = Sequel.connect(@dataclip.db_connection.create_connect_string)
+    @db.test_connection
+    p "Showlink Statement: " + @dataclip.statement
+    @dataset = @db[@dataclip.statement]
   end
 
   private

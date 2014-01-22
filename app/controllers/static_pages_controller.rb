@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
+  	if params[:id]
+  		p "show dataclip #{params[:id]}"
+  	end
   end
 
   def help
