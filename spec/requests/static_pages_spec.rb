@@ -11,7 +11,7 @@ describe "Static pages" do
     end 
     it "should have the title 'Home'" do
     visit home_path
-    page.should have_selector('title', :content  => "Home")
+    page.should have_selector('title', :text  => "Home")
   end
 
   end
@@ -23,7 +23,7 @@ describe "Contact page" do
 end
 it "should have the title 'Contact'" do
   visit contact_path
-    page.should have_selector('title', :content  => "Contact")
+    page.should have_selector('title', :text  => "Contact")
   end
 end
 
