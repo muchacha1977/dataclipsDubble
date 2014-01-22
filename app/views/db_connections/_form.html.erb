@@ -16,6 +16,7 @@
     <%= f.text_field :port, placeholder: "5432" %> 
     <%= f.text_field :username, placeholder: "better not root" %> 
     <%= f.text_field :password, placeholder: "..." %> 
+    <%= f.text_field :database_name, placeholder: "Database" %> 
 
     <%= collection_select(:db_connection, :db_connection_type_id, DbConnectionType.all, :id, :dbtype) %>
 

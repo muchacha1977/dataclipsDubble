@@ -70,6 +70,6 @@ class DbConnectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def db_connection_params
-      params[:db_connection].permit(:title, :db_connection_type_id, :hostname, :port, :username, :password);
+      params[:db_connection].permit(:title, :db_connection_type_id, :hostname, :port, :username, :password, :database_name);
     end
 end

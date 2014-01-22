@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :db_connections
+	has_many :dataclips
 
 	validates :email, presence: true, 
 		format: { with: VALID_EMAIL_REGEX }, 

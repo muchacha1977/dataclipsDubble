@@ -12,9 +12,16 @@ class DataclipsController < ApplicationController
   # GET /dataclips/1.json
   def show
     require 'sequel'
-    @db = Sequel.connect('postgres://postgres:p4ssw0rt@localhost:5432/dataclips_dev')
-    p @dataclip.statement
-    @dataset = @db[@dataclip.statement]
+    begin
+      #p @dataclip.db_connection.create_connect_string
+      @db = Sequel.connect(@dataclip.db_connection.create_connect_string)
+      @db.test_connection
+      p @dataclip.statement
+      @dataset = @db[@dataclip.statement]
+    rescue Exception => exception
+      p exception.message
+      redirect_to dataclips_path, notice: exception.message
+    end
   end
 
   # GET /dataclips/new
