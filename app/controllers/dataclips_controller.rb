@@ -75,6 +75,7 @@ class DataclipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dataclip_params
+      redirect_to root_path unless DbConnection.where("user_id = ? AND id = ?", current_user.id, params[:db_connection_id])
       params.require(:dataclip).permit(:db_connection_id, :title, :statement)
     end
 end
