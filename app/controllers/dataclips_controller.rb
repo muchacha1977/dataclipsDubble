@@ -5,7 +5,7 @@ class DataclipsController < ApplicationController
   # GET /dataclips
   # GET /dataclips.json
   def index
-    @dataclips = Dataclip.all
+    @dataclips = Dataclip.where("user_id = ?", current_user.id)
   end
 
   # GET /dataclips/1
@@ -18,8 +18,11 @@ class DataclipsController < ApplicationController
       @db.test_connection
       p @dataclip.statement
       @dataset = @db[@dataclip.statement]
+      if @dataset.any?
+        p "da is was"
+      end
     rescue Exception => exception
-      p exception.message
+      p "EXCEPTION: " + exception.message
       redirect_to dataclips_path, notice: exception.message
     end
   end
@@ -36,6 +39,10 @@ class DataclipsController < ApplicationController
   # POST /dataclips
   # POST /dataclips.json
   def create
+    return unless dataclip_params
+    p dataclip_params
+    redirect_to root_path and return unless dataclip_params[:db_connection_id]
+
     @dataclip = Dataclip.new(dataclip_params)
     @dataclip.user_id = current_user.id;
     @dataclip.link_token = SecureRandom.urlsafe_base64 32
@@ -87,12 +94,16 @@ class DataclipsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dataclip
-      @dataclip = Dataclip.find(params[:id])
+      @dataclip = Dataclip.where("id = ? AND user_id = ?", params[:id], current_user.id).first
+      redirect_to dataclips_path unless @dataclip
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dataclip_params
-      redirect_to root_path unless DbConnection.where("user_id = ? AND id = ?", current_user.id, params[:db_connection_id])
+      if !DbConnection.where("user_id = ? AND id = ?", current_user.id, params[:dataclip][:db_connection_id]).first
+        p "change params"
+        params[:dataclip][:db_connection_id] = nil        
+      end
       params.require(:dataclip).permit(:db_connection_id, :title, :statement)
     end
 end

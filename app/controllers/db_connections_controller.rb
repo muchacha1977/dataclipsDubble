@@ -65,7 +65,8 @@ class DbConnectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_db_connection
-      @db_connection = DbConnection.find(params[:id])
+      @db_connection = DbConnection.where("id = ? AND user_id = ?", params[:id], current_user.id).first
+      redirect_to dataclips_path unless @db_connection
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

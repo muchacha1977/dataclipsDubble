@@ -20,17 +20,23 @@
   <%= "#{show_url}?id=#{@dataclip.link_token}" %>
 </p>
 
+<% p @dataset.class %>
+
+<% if @dataset.any? %>
 <table class="table table-striped">
 <thead>
+<tr>
+  <% @dataset.first.keys.each do |column| %>
+  <td><%= "#{column}" %></td>
+  <% end %>
+</tr>
+<% @dataset.first do |row| %>
   <tr>
-<% @dataset.each do |row| %>
-  <tr>
-  <% row.each do |key, value| %>
+  <% row.each do |key| %>
     <td><%= key %></td> 
   <% end %>
   </tr>
 <% end %>
-</tr>
 </thead>
 <tbody>
 <% @dataset.each do |row| %>
@@ -42,6 +48,7 @@
 <% end %>
 </tbody>
 </table>
+<% end %>
 
 <%= link_to 'Edit', edit_dataclip_path(@dataclip) %> |
 <%= link_to 'Back', dataclips_path %>

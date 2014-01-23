@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :db_connection_id %><br>
-    <%= collection_select(:dataclip, :db_connection_id, DbConnection.all, :id, :title) %>
+    <%= collection_select(:dataclip, :db_connection_id, DbConnection.where("user_id = ?", current_user.id), :id, :title) %>
 
   </div>
   <div class="field">
