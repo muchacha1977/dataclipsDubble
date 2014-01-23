@@ -23,7 +23,7 @@
 <% p @dataset.class %>
 
 <% if @dataset.any? %>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="table-layout: fixed;word-wrap: break-word;">
 <thead>
 <tr>
   <% @dataset.first.keys.each do |column| %>
