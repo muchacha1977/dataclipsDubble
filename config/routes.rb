@@ -8,7 +8,7 @@ Dataclips::Application.routes.draw do
   devise_for :users
   get '/help', to: 'static_pages#help'
   get '/contact', to: 'static_pages#contact'
-  get '/about', to: 'static_pages#about'
+  get '/about', to: 'static_pages#about' #TODO change!
   get '/home', to: 'static_pages#home'
   get '/show', to: 'dataclips#showlink'
 
