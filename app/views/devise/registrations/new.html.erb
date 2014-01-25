@@ -1,18 +1,48 @@
-<h2>Sign up</h2>
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <%= form_for(resource, :as => resource_name, :html => {:class => "reg-page"}, :url => registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+                <div class="reg-header">
+                    <h2>Register a new account</h2>
+                    <p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>                    
+                </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+              
+               
+                <label>Email Address <span class="color-red">*</span></label>
+                <!--<input type="text" class="form-control margin-bottom-20">-->
+                 <%= f.email_field :email, :autofocus => true,  :class =>"form-control margin-bottom-20" %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Password <span class="color-red">*</span></label>
+                        <!--<input type="text" class="form-control margin-bottom-20">-->
+                        <%= f.password_field :password,   :class =>"form-control margin-bottom-20" %>  
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Confirm Password <span class="color-red">*</span></label>
+                        <!--<input type="text" class="form-control margin-bottom-20">-->
+                         <%= f.password_field :password_confirmation,   :class =>"form-control margin-bottom-20" %> 
+                    </div>
+                </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+                <hr>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label class="checkbox">
+                            <input type="checkbox"> 
+                            I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
+                        </label>                        
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <%= f.submit "Sign in" ,:class => "btn-u pull-right"  %>-
+                                            
+                    </div>
+                </div>
+           <% end %>
+        </div>
+    </div>
+</div><!--/container-->    
