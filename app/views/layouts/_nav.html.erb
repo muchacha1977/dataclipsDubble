@@ -1,9 +1,26 @@
-            <!-- Collect the nav links, forms, and other content for toggling -->
+			<!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="<%= root_path %>" class="dropdown-toggle">
+                            <b>dataclips.io</b>
+                        </a>
+                    </li>
+                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to 'Dataclips', dataclips_path %></li>
-                    <li><%= link_to 'Databases', db_connections_path %></li>
-                    <li><%= link_to 'Sign In', new_user_session_path %></li>
+                	<%- if user_signed_in? %>
+                    <li class="<%= getClassValueForNavItem('dataclips', controller_name)%>">
+                    <%= link_to 'Dataclips', dataclips_path %>
+                    </li>
+                    <li class="<%= getClassValueForNavItem('db_connections', controller_name)%>">
+                    <%= link_to 'Databases', db_connections_path %>
+                    </li>
                     <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                    <% else %>
+                    <li class="<%= getClassValueForNavItem('sessions', controller_name)%>">
+                    	<%= link_to 'Sign In', new_user_session_path %>
+                    </li>
+                    <% end %>
                 </ul>
             </div><!-- /navbar-collapse -->

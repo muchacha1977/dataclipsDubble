@@ -111,7 +111,7 @@
 
 .header .navbar-default {
 	border: none;
-	background: none;
+	background: #fafafa;
 }
 
 .header .navbar-collapse {
@@ -132,7 +132,6 @@
 	font-size: 15px;
 	font-weight:400;
 	padding: 9px 20px;
-	text-transform: uppercase;
 }
 
 .header .navbar-default .navbar-nav > .active > a {
