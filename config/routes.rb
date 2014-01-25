@@ -11,6 +11,7 @@ Dataclips::Application.routes.draw do
   get '/about', to: 'static_pages#about' #TODO change!
   get '/home', to: 'static_pages#home'
   get '/show', to: 'dataclips#showlink'
+  get '/terms', to: 'static_pages#terms'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
