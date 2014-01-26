@@ -45,6 +45,7 @@ gem 'bootstrap-sass' #bootstrap
 gem 'sequel' #DB-Mgmt-Gem
 
 gem 'foreigner' #foreign keys in DB
+gem 'attr_encrypted' #encrypt data in the database
 
 gem 'rails_12factor', group: :production #needed by heroku
 
