@@ -1,36 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Db connection:</strong>
-  <%= @dataclip.db_connection_id %>
-</p>
+<!--=== Content Part ===-->
+<div class="container" style="height:800px">    
+  <div class="row">            
+        <div class="col-md-12">
+            <div></div>
+            <div class="headline"><h2><%= @dataclip.title %></h2> 
+            <span style="font-weight:bold;margin:20px;">(<%= @dataclip.db_connection.title %>)</span></div>
+            <div>
+                <label>SQL-Statement:</label>
+                <div class="row margin-bottom-20">
+                    <div class="col-md-11 col-md-offset-0">
+                        <textarea rows="4" class="form-control"><%= @dataclip.statement %></textarea>
+                    </div>                
+                </div>
+                
+                <div class="row margin-bottom-20">
+                    <div class="col-md-11 col-md-offset-0">
+                        <p><button type="submit" class="btn-u">Update</button></p>
+                    </div>                
+                </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @dataclip.title %>
-</p>
+            </div>
+            <div>
 
-<p>
-  <strong>Statement:</strong>
-  <%= @dataclip.statement %>
-</p>
+            <% if @dataset.any? %>
+            <table class="table table-striped table-bordered" style="word-wrap: break-word;">
+            <thead style="font-weight:bold;">
+            <tr>
+              <% @dataset.first.keys.each do |column| %>
+              <td><%= "#{column}" %></td>
+              <% end %>
+            </tr>
+            <% @dataset.first do |row| %>
+              <tr>
+              <% row.each do |key| %>
+                <td><%= key %></td> 
+              <% end %>
+              </tr>
+            <% end %>
+            </thead>
+            <tbody>
+            <% @dataset.each do |row| %>
+              <tr>
+              <% row.each do |key, value| %>
+                <td><%= value %></td> 
+              <% end %>
+              </tr>
+            <% end %>
+            </tbody>
+            </table>
+            <% end %>
+            </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @dataclip.user_id %>
-</p>
-
-<table class="table table-striped">
-<tbody>
-<% @dataset.each do |row| %>
-	<tr>
-	<% row.each do |key, value| %>
-		<td><%= value %></td> 
-	<% end %>
-	</tr>
-<% end %>
-</tbody>
-</table>
-
-<%= link_to 'Edit', edit_dataclip_path(@dataclip) %> |
-<%= link_to 'Back', dataclips_path %>
+        </div><!-- col12 -->
+    </div><!--/row-->
+</div><!--/container-->   
+<!--=== End Content Part ===-->
