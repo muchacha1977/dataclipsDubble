@@ -3,7 +3,10 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <%= form_for(resource, :as => resource_name, :html => {:class => "reg-page"}, :url => registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
+               <%= devise_error_messages! %>
+
+
+
                 <div class="reg-header">
                     <h2>Register a new account</h2>
                     <p> Already Signed Up? Click <%= link_to 'Sign In', new_user_session_path, class:"color-green" %> Sign In</a> to login your account.</p>                 
@@ -30,10 +33,9 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label class="checkbox">
-                            <input type="checkbox"> 
-                            I read<%= link_to   " Terms and Conditions", terms_path , :class =>"color-green" %>
-                           <!--<a href="page_terms.html" class="color-green">Terms and Conditions</a>-->
-
+                             <p><label for="terms_condition">I agree with terms and conditions:</label>
+                                <!--<%= f.check_box :terms %>-->
+                                <%= f.check_box :terms %>
                         </label>                        
                     </div>
                     <div class="col-lg-6 text-right">
