@@ -23,7 +23,7 @@ class DataclipsController < ApplicationController
       end
     rescue Exception => exception
       p "EXCEPTION: " + exception.message
-      redirect_to dataclips_path, notice: exception.message
+      redirect_to dataclips_path, alert: exception.message
     end
   end
 

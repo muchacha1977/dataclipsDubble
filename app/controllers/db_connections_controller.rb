@@ -27,6 +27,7 @@ class DbConnectionsController < ApplicationController
   def create
     @db_connection = DbConnection.new(db_connection_params)
     @db_connection.user_id = current_user.id;
+
     respond_to do |format|
       if @db_connection.save
         format.html { redirect_to @db_connection, notice: 'Db connection was successfully created.' }
@@ -46,7 +47,7 @@ class DbConnectionsController < ApplicationController
         format.html { redirect_to db_connections_path, notice: 'Db connection was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', alert: @message }
         format.json { render json: @db_connection.errors, status: :unprocessable_entity }
       end
     end

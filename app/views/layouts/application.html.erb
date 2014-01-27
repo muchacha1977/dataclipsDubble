@@ -10,8 +10,31 @@
 <!--=== End Header ===-->    
 
 <body>
-<!--=== Content Part ===-->
 
+<!--=== Content Part ===-->
+<div class="container">    
+<div class="row">            
+<div class="col-md-12">
+    <!--Alert Messages-->
+    <% if notice %>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong><%= notice %></strong>
+    </div>                
+    <% end %>
+
+    <% if alert %>
+    <div class="alert alert-danger fade in">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong><%= alert %></strong>
+    </div>                
+    <% end %>
+
+    <!--End Alert Messages-->
+</div>
+</div>
+</div>
 <%= yield %> 
+<%= render 'layouts/unify_jsimport' %>  
 </body>
 </html>
