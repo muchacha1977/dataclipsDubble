@@ -4,13 +4,20 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+		:recoverable, :rememberable, :trackable, :validatable 
+        
 
 	has_many :db_connections
 	has_many :dataclips
 
     validates :password, presence: true, length: { maximum: 50}
-	validates :email, presence: true, 
+   
+
+	validates_acceptance_of :terms, :on => :create, :accept => true, :allow_nil => false
+
+
+	validates :email,  presence: true,
+
 		format: { with: VALID_EMAIL_REGEX }, 
 		uniqueness: { case_sensitive: false }
 
