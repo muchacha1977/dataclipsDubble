@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 DbConnectionType.create( dbtype: "postgres" )
-DbConnectionType.create( dbtype: "mysql" )
+DbConnectionType.create( dbtype: "mysql2" )

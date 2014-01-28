@@ -40,6 +40,7 @@ group :test do
 end
 
 gem 'pg' #Postgres
+gem 'mysql2' #mysql
 gem 'devise' # Devise Authentication
 gem 'bootstrap-sass' #bootstrap
 gem 'sequel' #DB-Mgmt-Gem
