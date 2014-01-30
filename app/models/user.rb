@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 	has_many :dataclips
 
     validates :password, presence: true, length: { maximum: 50}
-   
+    validates :terms_and_conditions, :acceptance => true, :on => :create
+
 	#validates_acceptance_of :terms_and_conditions,  :accept => true, :allow_nil => false
 
 	validates :email,  presence: true,

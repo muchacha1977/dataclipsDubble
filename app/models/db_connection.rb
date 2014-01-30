@@ -9,7 +9,7 @@ class DbConnection < ActiveRecord::Base
 
 	validates :title, :presence => { message: "Please enter a descriptive Title" }
 	validates :db_connection_type_id, presence: true
-#	validates :hostname, presence: true
+	validates :encrypted_hostname, presence: true
 	validates :port, presence: true
 	validates :user_id, presence: true
 	validates :database_name, presence: true
