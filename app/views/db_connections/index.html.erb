@@ -2,45 +2,45 @@
 <!--=== Content Part ===-->
 <div class="container" style="height:800px">    
   <div class="row">            
-        <div class="col-md-12">
+    <div class="col-md-12">
       <!-- General Questions -->
-            <div></div>
-            <div class="headline"><h2>Manage Database Connections</h2></div>
-            <div>
-            <table class="table table-striped" style="word-wrap: break-word;">
-<thead style="font-weight:bold;">
-<tr>
-  <td>Type</td>
-  <td>Info</td>
-  <td></td>
-</tr>
-  <tr>
-  </tr>
-</thead>
-<tbody>
-    <% @db_connections.each do |db_connection| %>
-    <tr>
-        <td><img src="<%= root_url + db_connection.db_connection_type.dbtype %>_logo.png" 
-        width="100px" height="100px"></img></td> 
-        <td><h1><%= db_connection.title %></h1><h3>Host: <%= db_connection.hostname + ":" + db_connection.port.to_s %></h3><h5><%= db_connection.dataclips.count %> Dataclips</h5></td> 
-        <td>[<%= link_to 'Edit', edit_db_connection_path(db_connection) %>]<br />
-        [<%= link_to 'Delete', db_connection, method: :delete, data: { confirm: 'Are you sure?' } %>]</td> 
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div></div>
+      <div class="headline"><h2>Manage Database Connections</h2></div>
+      <div>
+        <table class="table table-striped" style="word-wrap: break-word;">
+          <thead style="font-weight:bold;">
+            <tr>
+              <td>Type</td>
+              <td>Info</td>
+              <td></td>
+            </tr>
+            <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <% @db_connections.each do |db_connection| %>
+            <tr>
+              <td><img src="<%= root_url + db_connection.db_connection_type.dbtype %>_logo.png" 
+                width="100px" height="100px"></img></td> 
+                <td><h1><%= db_connection.title %></h1><h3>Host: <%= db_connection.hostname + ":" + db_connection.port.to_s %></h3><h5><%= db_connection.dataclips.count %> Dataclips</h5></td> 
+                <td>[<%= link_to 'Edit', edit_db_connection_path(db_connection)  %>]<br />
+                  [<%= link_to 'Delete', db_connection,  method: :delete, data: { confirm: 'Are you sure?' } %>]</td> 
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
 
-            </div>
+          </div>
 
- 
-            <!-- End General Questions -->
-<br>
+          
+          <!-- End General Questions -->
+          <br>
 
-<%= link_to 'New Db connection', new_db_connection_path %>
+          <%= link_to 'New Db connection', new_db_connection_path %>
 
         </div><!-- col12 -->
-    </div><!--/row-->
-</div><!--/container-->   
+      </div><!--/row-->
+    </div><!--/container-->   
 
 
-<!--=== End Content Part ===-->
+    <!--=== End Content Part ===-->
