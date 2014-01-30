@@ -15,3 +15,10 @@
 // require bootstrap
 //= require turbolinks
 //= require_tree .
+
+//function validateCheckbox()
+//{
+  //  if( $('#user_terms_and_conditions').attr('checked')){
+    //  alert("you have to accept the terms first");
+    //}
+//};

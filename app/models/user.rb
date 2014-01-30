@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
     validates :password, presence: true, length: { maximum: 50}
    
 
-	#validates_acceptance_of :terms, :on => :create, :accept => true, :allow_nil => false
-
+	#validates_acceptance_of :terms_and_conditions,  :accept => true, :allow_nil => false
+	attr_accessible :email, :password, :terms_and_conditions
 
 	validates :email,  presence: true,
 		format: { with: VALID_EMAIL_REGEX }, 
