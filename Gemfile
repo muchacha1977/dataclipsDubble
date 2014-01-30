@@ -44,7 +44,6 @@ gem 'mysql2' #mysql
 gem 'devise' # Devise Authentication
 gem 'bootstrap-sass' #bootstrap
 gem 'sequel' #DB-Mgmt-Gem
-gem 'protected_attributes'
 gem 'foreigner' #foreign keys in DB
 gem 'attr_encrypted' #encrypt data in the database
 
