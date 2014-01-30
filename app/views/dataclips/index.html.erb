@@ -1,47 +1,51 @@
-<div class="container" style="height:800px">  
-<div class="panel panel-green margin-bottom-40">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="icon-user"></i> Basic Table Option (with space)</h3>
-        </div>
-        <div class="panel-body">
-          <table class="table">
-            <thead>
-              <tr>
-               <th>Db connection</th>
-              <th>Title</th>
-              <th>Statement</th>
-              <th>User</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @dataclips.each do |dataclip| %>
+
+<!--=== Content Part ===-->
+<div class="container" style="height:800px">    
+  <div class="row">            
+        <div class="col-md-12">
+      <!-- General Questions -->
+            <div></div>
+            <div class="headline"><h2>Manage Dataclips</h2></div>
+            <div>
+            <table class="table table-striped" style="word-wrap: break-word;">
+<thead style="font-weight:bold;">
+<tr>
+     <th>Db connection</th>
+      <th>Title</th>
+      <th>Statement</th>
+      <th>User</th>
+  <td></td>
+</tr>
+  <tr>
+  </tr>
+</thead>
+<tbody>
+    <% @dataclips.each do |dataclip| %>
             <tr>
 
               <td><h1><%= dataclip.db_connection_id %></h1></td> 
               <td><%= dataclip.title %></td>
               <td><%= dataclip.statement %></td>
               <td><%= dataclip.user_id %></td>
-              <td><%= link_to 'Show', dataclip %></td>
-              <td><%= link_to 'Edit', edit_dataclip_path(dataclip) %></td>
-              <td><%= link_to 'Destroy', dataclip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+              <td><%= link_to 'Show', dataclip , :class => "btn-u"  %></td>
+              <td><%= link_to 'Edit  ', edit_dataclip_path(dataclip), :class => "btn-u btn-u-blue"%></td>
+              <td><%= link_to 'Destroy', dataclip,:class => "btn-u btn-u-red", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            
             </tr>
-            <% end %>
-          </tbody>
-          </table>
-        </div>            
-      </div>
-      <div class="btn btn-success btn-xs">
-        <i class="icon-ok"></i>
-      <%= link_to "New Dataclip" , new_dataclip_path  %>
-     
-    </div>
-      </div>
+    <% end %>
+  </tbody>
+</table>
 
+            </div>
 
+ 
+            <!-- End General Questions -->
+<br>
+
+<%= link_to "New Dataclip" , new_dataclip_path  %>
+
+        </div><!-- col12 -->
+    </div><!--/row-->
 
 
 

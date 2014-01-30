@@ -23,8 +23,8 @@
         <td><img src="<%= root_url + db_connection.db_connection_type.dbtype %>_logo.png" 
         width="100px" height="100px"></img></td> 
         <td><h1><%= db_connection.title %></h1><h3>Host: <%= db_connection.hostname + ":" + db_connection.port.to_s %></h3><h5><%= db_connection.dataclips.count %> Dataclips</h5></td> 
-        <td>[<%= link_to 'Edit', edit_db_connection_path(db_connection) %>]<br />
-        [<%= link_to 'Delete', db_connection, method: :delete, data: { confirm: 'Are you sure?' } %>]</td> 
+        <td>[<%= link_to 'Edit', edit_db_connection_path(db_connection)  %>]<br />
+        [<%= link_to 'Delete', db_connection,  method: :delete, data: { confirm: 'Are you sure?' } %>]</td> 
     </tr>
     <% end %>
   </tbody>
