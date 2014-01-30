@@ -1,26 +1,83 @@
-<%= form_for(@db_connection) do |f| %>
-  <% if @db_connection.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@db_connection.errors.count, "error") %> prohibited this db_connection from being saved:</h2>
 
-      <ul>
-      <% @db_connection.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<!--=== Content Part ===-->
 
-    <%= f.text_field :title, placeholder: "Title for DBConnection" %> 
-    <%= f.text_field :port, placeholder: "5432" %> 
-    <%= f.text_field :username, placeholder: "better not root" %> 
-    <%= f.text_field :password, placeholder: "..." %> 
-    <%= f.text_field :database_name, placeholder: "Database" %> 
-    <%= f.text_field :hostname, placeholder: "example.com or IP-address" %> 
 
-    <%= collection_select(:db_connection, :db_connection_type_id, DbConnectionType.all, :id, :dbtype) %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+             <!--%= form_for(@db_connection)   do |f| %>-->
+            
+             <%= form_for(@db_connection, :html => {:class => "reg-page"})   do |f| %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+                <% if @db_connection.errors.any? %>
+                <div id="error_explanation">
+                  <div class="reg-header">
+                      <h2><%= pluralize(@db_connection.errors.count, "error") %> prohibited this db_connection from being saved:</h2>                         
+                 </div>
+                  <ul>
+                <% @db_connection.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+
+                <div class="reg-header">
+                    <h2>Create Database Connection</h2>
+                                   
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Title for DBConnection <span class="color-red">*</span></label>
+                        <%= f.text_field :password, placeholder: "Title for DBConnection",   :class =>"form-control margin-bottom-20" %>  
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Port <span class="color-red">*</span></label>
+                        <%= f.text_field :port, placeholder: "5432",   :class =>"form-control margin-bottom-20" %>
+                    </div>
+                     <div class="col-sm-6">
+                        <label>Username <span class="color-red">*</span></label>
+                        <%= f.text_field :username, placeholder: "admin",   :class =>"form-control margin-bottom-20" %>
+                    </div>
+                     <div class="col-sm-6">
+                        <label>Password <span class="color-red">*</span></label>
+                        <%= f.text_field :password, placeholder: "password",   :class =>"form-control margin-bottom-20" %>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Database Name <span class="color-red">*</span></label>
+                        <%= f.text_field :database_name, placeholder: "Database Name",   :class =>"form-control margin-bottom-20" %>
+                    </div>
+                     <div class="col-sm-6">
+                        <label>Host Name <span class="color-red">*</span></label>
+                        <%= f.text_field :hostname, placeholder: "Host Name",   :class =>"form-control margin-bottom-20" %>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Databas Type<span class="color-red">*</span></label>
+                        <%= collection_select(:db_connection, :db_connection_type_id, DbConnectionType.all, :id, :dbtype,:class =>"form-control margin-bottom-20")  %>
+                     
+                    </div>
+                    <div class="col-sm-6">
+                        <!--<label>Create DB Conention <span class="color-red">*</span></label>-->
+                        <%= f.submit "Send" ,:class => "btn-u pull-right"  %>
+                    </div>
+                </div>
+                
+                <hr>
+                <!--div class="row">
+                   
+                    <div class="col-lg-6 text-right">
+
+                        <!--%= f.submit "Create DB Conention" ,:class => "btn-u pull-right"  %>
+                                            
+                    </div>
+                </div-->
+
+           <% end %>
+        </div>
+   </div>
+</div><!--/container-->   
