@@ -1,16 +1,48 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<!--=== Content Part ===-->
+<div class="container">     
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+          
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
+            <%= form_for(resource, :as => resource_name,:html => {:class => "reg-page"}, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+            <%= devise_error_messages! %>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+               <!--<%= devise_error_messages! %>-->
+                <div class="reg-header">            
+                    <h2>Change your password</h2>
+                </div>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+                <div class="tab-pane active">
+                  <!--<label>Password</label> -->
 
-<%= render "devise/shared/links" %>
+                  <%= f.hidden_field :reset_password_token , placeholder: "Title",   :class =>"form-control" %>
+
+                </div>  
+                 <div class="tab-pane active">
+                  
+                  <%= f.password_field :password , placeholder: "New password",   :class =>"form-control" %>
+
+                </div> 
+                 <br/>
+                  <div class="tab-pane active">
+                  
+
+                  <%= f.password_field :password_confirmation ,:autofocus => true, placeholder: "Password confirmation",   :class =>"form-control" %>
+
+                </div> 
+
+                              
+                <br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.submit "Change my password" ,:class => "btn-u pull-right"  %>                      
+                    </div>
+                </div>
+                <hr>
+             
+            <% end %>
+        </div>
+    </div><!--/row-->
+</div><!--/container-->     
+<!--=== End Content Part ===--> 
