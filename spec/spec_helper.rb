@@ -13,6 +13,10 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+
+  
+
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -41,4 +45,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Capybara::DSL
+  #config.include ValidUserHelper, :type => :controller
+  #config.include ValidUserRequestHelper, :type => :request
+  config.include RequestMacros, :type => :request
+  config.include FactoryGirl::Syntax::Methods
 end

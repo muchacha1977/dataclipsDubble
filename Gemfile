@@ -6,6 +6,7 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 group :development, :test do 
 	gem 'rspec-rails'
+	gem 'factory_girl_rails'
 end
 
 # Gems used only for assets and not required # in production environments by default. 
@@ -37,6 +38,7 @@ end
 
 group :test do
 	gem 'capybara'
+
 end
 
 gem 'pg' #Postgres
