@@ -1,30 +1,53 @@
-<%= form_for(@dataclip) do |f| %>
-  <% if @dataclip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dataclip.errors.count, "error") %> prohibited this dataclip from being saved:</h2>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+     <%= form_for(@dataclip, :html => {:class => "reg-page"})   do |f| %>
+
+     <% if @dataclip.errors.any? %>
+     <div id="error_explanation">
+      <div class="reg-header">
+        <h2><%= pluralize(@dataclip.errors.count, "error") %> prohibited this dataclip from being saved:</h2>                         
+      </div>
       <ul>
-      <% @dataclip.errors.full_messages.each do |msg| %>
+        <% @dataclip.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :db_connection_id %><br>
-    <%= collection_select(:dataclip, :db_connection_id, DbConnection.where("user_id = ?", current_user.id), :id, :title) %>
+    <div class="reg-header">
+      <h2>Create Dataclip</h2>
 
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :statement %><br>
-    <%= f.text_area :statement %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    </div>
+
+    <div class="tab-pane active">
+      <label>Title</label> 
+
+      <%= f.text_field :title ,:autofocus => true, placeholder: "Title",   :class =>"form-control" %>
+
+    </div>   
+
+    <div class="tab-pane active">
+      <label>Statement</label> 
+
+      <%= f.text_area :statement , placeholder: "Statement",  :class =>"form-control" ,:rows=>"7" %>
+
+    </div>  
+    <br/>
+
+    <div class="tab-pane active">    
+     <label> <%= f.label :db_connection_id %></label> 
+     <%= collection_select(:dataclip, :db_connection_id, DbConnection.where("user_id = ?", current_user.id), :id, :title, :class =>"form-control") %>  
+
+     <%= f.submit "Send" ,:class => "btn-u pull-right"  %> 
+
+
+   </div>
+
+   <% end %>
+ </div>
+</div>
+</div><!--/container-->   
