@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 
 <!--=== Content Part ===-->
-<div class="container" style="height:800px">    
+<div class="container">    
   <div class="row">            
         <div class="col-md-12">
             <div></div>
@@ -10,22 +9,26 @@
             <div>
                 <label>SQL-Statement:</label>
                 <div class="row margin-bottom-20">
-                    <div class="col-md-11 col-md-offset-0">
-                        <textarea rows="4" class="form-control"><%= @dataclip.statement %></textarea>
+                    <div class="col-md-11 col-md-offset-0" style="height=80px;">
+                        <div id="editor" style="height:80px"><%= @dataclip.statement %></div>
                     </div>                
                 </div>
                 
                 <div class="row margin-bottom-20">
                     <div class="col-md-11 col-md-offset-0">
-                        <p><button type="submit" class="btn-u">Update</button></p>
+                    <%= form_for(@dataclip) do |f| %>
+                      <%= f.text_field :statement , placeholder: "Statement",  :class =>"form-control" ,:rows=>"1", :type=>"hidden" %>
+                      <%= f.text_field :db_connection_id, :type=>"hidden" %>
+                    <%= f.submit "Update" ,:class => "btn-u"  %> 
+                    <% end %>
                     </div>                
                 </div>
 
             </div>
             <div>
 
-            <% if @dataset.any? %>
-            <table class="table table-striped table-bordered" style="word-wrap: break-word;">
+            <% if @dataset %>
+            <table class="table table-striped table-bordered" style="word-wrap: break-word;table-layout: fixed;">
             <thead style="font-weight:bold;">
             <tr>
               <% @dataset.first.keys.each do |column| %>
@@ -57,3 +60,15 @@
     </div><!--/row-->
 </div><!--/container-->   
 <!--=== End Content Part ===-->
+
+<script src="<%= root_url %>vendor/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/katzenmilch");
+    editor.getSession().setMode("ace/mode/sql");
+    var textarea = $('#dataclip_statement');
+    editor.getSession().setValue(textarea.val());
+    editor.getSession().on('change', function(){
+      textarea.val(editor.getSession().getValue());
+    });
+</script>

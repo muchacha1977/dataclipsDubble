@@ -11,20 +11,7 @@ class DataclipsController < ApplicationController
   # GET /dataclips/1
   # GET /dataclips/1.json
   def show
-    require 'sequel'
-    begin
-      #p @dataclip.db_connection.create_connect_string
-      @db = Sequel.connect(@dataclip.db_connection.create_connect_string)
-      @db.test_connection
-      p @dataclip.statement
-      @dataset = @db[@dataclip.statement]
-      if @dataset.any?
-        p "da is was"
-      end
-    rescue Exception => exception
-      p "EXCEPTION: " + exception.message
-      redirect_to dataclips_path, alert: exception.message
-    end
+    redirect_to show_path(:id=>@dataclip.link_token)
   end
 
   # GET /dataclips/new
@@ -63,7 +50,7 @@ class DataclipsController < ApplicationController
   def update
     respond_to do |format|
       if @dataclip.update(dataclip_params)
-        format.html { redirect_to @dataclip, notice: 'Dataclip was successfully updated.' }
+        format.html { redirect_to show_path(:id=>@dataclip.link_token), notice: 'Dataclip was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -83,12 +70,19 @@ class DataclipsController < ApplicationController
   end
 
   def showlink
-    @dataclip = Dataclip.where("link_token = ?", params[:id]).first
-    p @dataclip
-    @db = Sequel.connect(@dataclip.db_connection.create_connect_string)
-    @db.test_connection
-    p "Showlink Statement: " + @dataclip.statement
-    @dataset = @db[@dataclip.statement]
+    begin
+      @dataclip = Dataclip.where("link_token = ?", params[:id]).first
+      p @dataclip
+      @db = Sequel.connect(@dataclip.db_connection.create_connect_string)
+      @db.test_connection
+      p "Showlink Statement: " + @dataclip.statement
+      @dataset = @db[@dataclip.statement]
+      @dataset.first
+    rescue Exception => exception
+      p "Showlink Error: " + exception.message
+      flash[:alert] = exception.message
+      @dataset = nil;
+    end
   end
 
   private
